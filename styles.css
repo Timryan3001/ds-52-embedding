@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* ---------- Design tokens ---------- */
+:root {
+  --bg-top: #f5f9ff;
+  --bg-bottom: #e6f0fc;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #ffffff;
+  --border: #d5e3f5;
+  --border-strong: #b6d0f0;
+
+  --text: #0f2440;
+  --text-muted: #5a7293;
+
+  --primary: #3b82f6;
+  --primary-deep: #1d5fd1;
+  --primary-soft: #eaf3ff;
+  --sky: #38bdf8;
+  --ring: rgba(59, 130, 246, 0.35);
+
+  --shadow-sm: 0 1px 2px rgba(15, 36, 64, 0.06);
+  --shadow-md: 0 10px 28px -10px rgba(30, 90, 180, 0.22);
+  --shadow-lg: 0 30px 60px -20px rgba(30, 90, 180, 0.28);
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --content-width: 1000px;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 64px 24px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 600px at 0% -10%, #d7e8ff 0%, transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, #dcf3ff 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Heading ---------- */
+h1 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2rem, 3.5vw + 1rem, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  background: linear-gradient(
+    115deg,
+    #0f2440 0%,
+    var(--primary-deep) 55%,
+    var(--sky) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rise 0.6s ease-out both;
+}
+
+/* ---------- Filter panel ---------- */
+fieldset {
+  width: min(var(--content-width), 100%);
+  margin: 0;
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: rise 0.6s 0.08s ease-out both;
+}
+
+legend {
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-deep);
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Buttons ---------- */
+input[type="button"] {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 11px 20px;
+  color: var(--text);
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+input[type="button"]:hover {
+  transform: translateY(-1px);
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+input[type="button"]:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+input[type="button"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Primary action */
+#onw {
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-deep) 100%
+  );
+  border-color: transparent;
+  box-shadow: 0 6px 16px -6px rgba(29, 95, 209, 0.55);
+}
+
+#onw:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #4b8ff8 0%, #1a56c0 100%);
+  box-shadow: 0 10px 22px -8px rgba(29, 95, 209, 0.6);
+}
+
+/* Push Undo to the far right */
+#undo {
+  margin-left: auto;
+}
+
+/* ---------- Tableau viz card ---------- */
+tableau-viz {
+  display: block;
+  max-width: 100%;
+  overflow: auto;
+  background: var(--surface-solid);
+  border-radius: var(--radius);
+  box-shadow:
+    0 0 0 1px var(--border),
+    var(--shadow-lg);
+  animation: rise 0.6s 0.16s ease-out both;
+}
+
+/* ---------- Motion ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  body {
+    padding: 40px 16px 64px;
+    gap: 24px;
+  }
+
+  fieldset {
+    padding: 20px 16px 16px;
+  }
+
+  input[type="button"] {
+    flex: 1 1 auto;
+  }
+
+  #undo {
+    margin-left: 0;
+  }
+}
